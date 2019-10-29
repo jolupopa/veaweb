@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
+use App\Category;
+use App\Departamento;
 use App\Http\Controllers\Controller;
 use App\Property;
 use DataTables;
@@ -26,8 +28,10 @@ class PropertyController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
+		$departamentos = Departamento::all();
+		$categorias = Category::all();
 
-		return view('admin.property.create_property');
+		return view('admin.property.create', compact('departamentos', 'categorias'));
 	}
 
 	/**
@@ -87,9 +91,9 @@ class PropertyController extends Controller {
 			->addColumn('action', function ($model) {
 				return view('admin.partials.actions', [
 					'model' => $model,
-					'url_show' => route('properties.show', $model->id),
-					'url_edit' => route('properties.edit', $model->id),
-					'url_destroy' => route('properties.destroy', $model->id),
+					'url_show' => route('property.show', $model->id),
+					'url_edit' => route('property.edit', $model->id),
+					'url_destroy' => route('property.destroy', $model->id),
 				]);
 			})
 			->addIndexColumn()

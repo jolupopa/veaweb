@@ -34,8 +34,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview {{ request()->is('properties*') ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link {{ request()->is('properties*') ? 'active' : '' }} ">
+          <li class="nav-item has-treeview {{ request()->is('property*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ request()->is('property*') ? 'active' : '' }} ">
               <i class="nav-icon fa fa-home"></i>
               <p> Propiedades
                 <i class="right fa fa-angle-left"></i>
@@ -43,22 +43,22 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('properties.index')}}"
-                class="nav-link {{ request()->is('properties') ? 'active' : '' }}">
+                <a href="{{ route('property.index')}}"
+                class="nav-link {{ request()->is('property') ? 'active' : '' }}">
                 <i class="fa fa-plus nav-icon"></i>
                 <p>Listar
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('properties.create')}}"
-              class="nav-link {{ request()->is('properties/create') ? 'active' : '' }}">
+              <a href="{{ route('property.create')}}"
+              class="nav-link {{ request()->is('property/create') ? 'active' : '' }}">
               <i class="fa fa-plus nav-icon"></i>
               <p>Agregar</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('properties.create')}}" class="nav-link">
+            <a href="{{ route('property.create')}}" class="nav-link">
               <i class="fa fa-plus nav-icon"></i>
               <p>En Captación</p>
             </a>
@@ -125,8 +125,8 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('categories.index')}}"
-            class="nav-link {{ request()->is('utilities/categories') ? 'active' : '' }}">
+            <a href="{{ route('category.index')}}"
+            class="nav-link {{ request()->is('category') ? 'active' : '' }}">
             <i class="fa fa-circle-o nav-icon"></i>
             <p>Categorias</p>
           </a>
@@ -175,51 +175,51 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('properties.index')}}" class="nav-link">
-                <i class="fa fa-plus nav-icon"></i>
+              <a href="{{ route('user.index')}}" class="nav-link">
+                <i class="fa fa-angle-right nav-icon"></i>
                 <p>Usuarios</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('properties.create')}}" class="nav-link">
-                <i class="fa fa-plus nav-icon"></i>
+              <a href="{{ route('role.index')}}" class="nav-link">
+                <i class="fa fa-angle-right nav-icon"></i>
                 <p>Roles</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('properties.create')}}" class="nav-link">
-                <i class="fa fa-plus nav-icon"></i>
+              <a href="{{ route('permission.index')}}" class="nav-link">
+                <i class="fa fa-angle-right nav-icon"></i>
                 <p>Permisos</p>
               </a>
             </li>
           </ul>
         </li>
         <li class="nav-item">
-          <a href="{{ route('properties.index')}}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="fa fa-plus nav-icon"></i>
             <p>Banner</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('properties.create')}}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="fa fa-plus nav-icon"></i>
             <p>Destacados</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('properties.create')}}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="fa fa-plus nav-icon"></i>
             <p>Articulos</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('properties.create')}}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="fa fa-plus nav-icon"></i>
             <p>Clasificados</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('properties.create')}}" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="fa fa-plus nav-icon"></i>
             <p>Configuracion</p>
           </a>

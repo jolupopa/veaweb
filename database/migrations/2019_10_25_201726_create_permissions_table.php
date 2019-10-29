@@ -4,18 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateZonesTable extends Migration {
+class CreatePermissionsTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('zones', function (Blueprint $table) {
+		Schema::create('permissions', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('zone_name');
-			$table->integer('distrito_id')->unsigned();
-
+			$table->string('name');
+			$table->string('key');
+			$table->string('slug')->unique();
+			$table->string('description')->nullable();
 			$table->timestamps();
 		});
 	}
@@ -26,6 +27,6 @@ class CreateZonesTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('zones');
+		Schema::dropIfExists('permissions');
 	}
 }

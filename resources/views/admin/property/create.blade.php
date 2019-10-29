@@ -1,4 +1,4 @@
-@extends('layouts.adminLayout.admin_app')
+@extends('layouts.adminLayout.admin')
 
 
 
@@ -24,7 +24,7 @@
 
 	<!-- Main content -->
 	<section class="content">
-		<form method="POST" action="{{ route('properties.store')}}">
+		<form method="POST" action="{{ route('property.store')}}">
 
 			{{ csrf_field() }}
 			<div class="container-fluid">
@@ -47,15 +47,15 @@
 									<!-- select -->
 									<div class="col-12 col-sm-4 form-group">
 										<label>Tipo de Inmueble</label>
-										<select class="form-control" name="type_property" >
-											<option value="">Seleccione una Categoria</option>
-											<option value="10">Casa 10</option>
-											<option value="11">option 11</option>
-											<option value="12">option 12</option>
-											<option value="13">option 13</option>
-											<option value="14">option 14</option>
+										<select class="form-control" name="type_property" id="type_property">
+											<option value="0" disable="true" selected="true">Seleccione una Categoria</option>
+											@foreach ($categorias as $key => $value)
+											<option value="{{$value->id}}">{{ $value->category_name }}</option>
+											@endforeach
+
 										</select>
 									</div>
+
 									<div class="col-12 col-sm-4 form-group">
 										<label>Tipo de transaccion</label>
 										<select class="form-control" name="type_operation">
@@ -79,39 +79,32 @@
 
 								<div class="row">
 									<!-- text input -->
-									<div class="col-12 col-sm-4 form-group">
-										<label>Departamento</label>
-										<select name="departamento" class="form-control">
-											<option value="">Departamento</option>
-											<option>La Libertad</option>
-											<option>option 2</option>
-											<option>option 3</option>
-											<option>option 4</option>
-											<option>option 5</option>
-										</select>
 
+									<div class="col-12 col-sm-4 form-group">
+										<label for="">Departamentos</label>
+										<select class="form-control" name="departamento" id="departamento">
+											<option value="0" disable="true" selected="true">== Elige un Departamento ==</option>
+											@foreach ($departamentos as $key => $value)
+											<option value="{{$value->id}}">{{ $value->departamento_name }}</option>
+											@endforeach
+										</select>
 									</div>
 									<!-- select -->
 									<div class="col-12 col-sm-4 form-group">
-										<label>Provincia</label>
-										<select name="provincia" class="form-control">
-											<option value="">Provincias</option>
-											<option>Trujillo</option>
-											<option>option 2</option>
-											<option>option 3</option>
-											<option>option 4</option>
-											<option>option 5</option>
+										<label for="">Provincias</label>
+										<select class="form-control" name="provincias" id="provincias">
+											<option value="0" disable="true" selected="true">=== Elije la Provincia ===</option>
 										</select>
 									</div>
+
 									<div class="col-12 col-sm-4 form-group">
-										<label>Distrito</label>
-										<select name="distrito" class="form-control">
-											<option value="">Distritos</option>
-											<option>Victor Larco Herrera</option>
-											<option>Alquiler</option>
-											<option>Compra</option>
+										<label for="">Distritos</label>
+										<select class="form-control" name="distritos" id="distritos">
+											<option value="0" disable="true" selected="true">=== Elije el Distrito ===</option>
 										</select>
 									</div>
+
+
 								</div>
 
 								<div class="row">
@@ -130,16 +123,13 @@
 									</div>
 									<!-- select -->
 									<div class="col-12 col-sm-4 form-group">
-										<label>Zona</label>
-										<select name="zone" class="form-control">
-											<option value="">Zonas</option>
-											<option>Urb California</option>
-											<option>option 2</option>
-											<option>option 3</option>
-											<option>option 4</option>
-											<option>option 5</option>
+										<label for="">Zonas</label>
+										<select class="form-control" name="zonas" id="zonas">
+											<option value="0" disable="true" selected="true">== Elige la Zona ==</option>
 										</select>
 									</div>
+
+
 									<div class="col-12 col-sm-4 form-group">
 										<label>Codigo Postal</label>
 										<input type="text" name="cp" class="form-control{{ $errors->has('cp') ? ' is-invalid' : '' }}" placeholder="Codigo Postal" value="{{ old('cp') }}" >
@@ -741,3 +731,63 @@
 		</div>
 
 		@endsection
+
+
+		@push('scripts')
+		<script >
+			$('#departamento').on('change', function(e){
+				console.log(e);
+				var departamento_id = e.target.value;
+				$.get('/json-provincias?departamento_id=' + departamento_id,function(data) {
+					console.log(data);
+
+					$('#provincias').empty();
+					$('#provincias').append('<option value="0" disable="true" selected="true">== Elige la Provincia ==</option>');
+
+					$('#distritos').empty();
+					$('#distritos').append('<option value="0" disable="true" selected="true">== Elige el Distrito ==</option>');
+
+					$('#zonas').empty();
+					$('#zonas').append('<option value="0" disable="true" selected="true">== Elige la Zona ===</option>');
+
+					$.each(data, function(index, provinciasObj){
+						$('#provincias').append('<option value="'+ provinciasObj.id +'">'+ provinciasObj.provincia_name +'</option>');
+					})
+				});
+			});
+
+			$('#provincias').on('change', function(e){
+				console.log(e);
+				var provincia_id = e.target.value;
+				$.get('/json-distritos?provincia_id=' + provincia_id,function(data) {
+					console.log(data);
+					$('#distritos').empty();
+					$('#distritos').append('<option value="0" disable="true" selected="true">== Elige el Distrito ==</option>');
+
+					$('#zonas').empty();
+					$('#zonas').append('<option value="0" disable="true" selected="true">== Elige la Zona ===</option>');
+
+					$.each(data, function(index, distritosObj){
+						$('#distritos').append('<option value="'+ distritosObj.id +'">'+ distritosObj.distrito_name +'</option>');
+					})
+				});
+			});
+
+			$('#distritos').on('change', function(e){
+				console.log(e);
+				var distrito_id = e.target.value;
+				$.get('/json-zonas?distrito_id=' + distrito_id,function(data) {
+					console.log(data);
+					$('#zonas').empty();
+					$('#zonas').append('<option value="0" disable="true" selected="true">== Elige la Zone ===</option>');
+
+					$.each(data, function(index, zonesObj){
+						$('#zonas').append('<option value="'+ zonesObj.id +'">'+ zonesObj.zone_name +'</option>');
+					})
+				});
+			});
+
+
+
+		</script>
+		@endpush

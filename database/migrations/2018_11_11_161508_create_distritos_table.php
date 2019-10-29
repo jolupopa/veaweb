@@ -14,6 +14,8 @@ class CreateDistritosTable extends Migration {
 		Schema::create('distritos', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('distrito_name');
+			$table->integer('provincia_id')->unsigned();
+
 			$table->timestamps();
 		});
 	}

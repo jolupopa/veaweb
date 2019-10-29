@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Controllers\Controller;
@@ -11,7 +11,6 @@ class CategoryController extends Controller {
 
 	public function index() {
 		$categories = Category::get();
-		//$properties = json_decode(json_encode($properties));
 		return view('admin.category.index');
 	}
 
@@ -54,10 +53,8 @@ class CategoryController extends Controller {
 		$model->update($request->all());
 	}
 
-	public function destroy($id) {
-		$model = Category::findOrFail($id);
-		$model->delete();
-		//Category::destroy($id);
+	public function destroy(Category $category) {
+		$category->delete();
 	}
 
 	public function dataTable() {
@@ -66,9 +63,9 @@ class CategoryController extends Controller {
 			->addColumn('action', function ($model) {
 				return view('admin.partials.actions', [
 					'model' => $model,
-					'url_show' => route('categories.show', $model->id),
-					'url_edit' => route('categories.edit', $model->id),
-					'url_destroy' => route('categories.destroy', $model->id),
+					'url_show' => route('category.show', $model->id),
+					'url_edit' => route('category.edit', $model->id),
+					'url_destroy' => route('category.destroy', $model->id),
 				]);
 			})
 			->addIndexColumn()

@@ -1,5 +1,5 @@
 {!! Form::model($model, [
-	'route' => $model->exists ? ['categories.update', $model->id] : 'categories.store',
+	'route' => $model->exists ? ['category.update', $model->id] : 'category.store',
 	'method' => $model->exists ? 'PUT' : 'POST'
 ])
 !!}

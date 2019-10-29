@@ -1,4 +1,4 @@
-@extends('layouts.adminLayout.admin_app')
+@extends('layouts.adminLayout.admin')
 
 @section('content')
 <div class="content-wrapper">
@@ -8,7 +8,7 @@
 			<div class="row mb-2">
 				<div class="col-sm-6">
 					<h1 class="m-0 text-dark">
-						Panel Principal
+						Titulo del panel
 					</h1>
 				</div>
 				<!-- /.col -->
@@ -16,7 +16,7 @@
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item active">
 							<a href="#">
-								Panel principal
+								link breadcrumb
 							</a>
 						</li>
 					</ol>

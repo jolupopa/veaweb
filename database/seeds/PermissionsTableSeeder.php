@@ -1,6 +1,6 @@
 <?php
-
-use Caffeinated\Shinobi\Models\Permission;
+use App\Permission;
+use App\Role;
 use Illuminate\Database\Seeder;
 
 class PermissionsTableSeeder extends Seeder {
@@ -13,120 +13,87 @@ class PermissionsTableSeeder extends Seeder {
 
 		// Usuarios -- se cra al registrarse
 		Permission::create([
-			'name' => 'Navegar usuarios',
-			'slug' => 'users.index',
+			'name' => 'Listar usuarios',
+			'key' => 'index user',
+			'slug' => 'index-user',
 			'description' => 'Lista y navega todos los usuarios del sistema',
 		]);
 
 		Permission::create([
-			'name' => 'Ver detalle de usuario',
-			'slug' => 'users.show',
+			'name' => 'Crear usuario',
+			'key' => 'create user',
+			'slug' => 'create-user',
+			'description' => 'Ver en detalle cada unode  los usuarios del sistema',
+		]);
+
+		Permission::create([
+			'name' => 'Detallar usuario',
+			'key' => 'show user',
+			'slug' => 'show-user',
 			'description' => 'Ver en detalle cada unode  los usuarios del sistema',
 		]);
 
 		Permission::create([
 			'name' => 'Editar usuario',
-			'slug' => 'users.edit',
-			'description' => 'Editar cualquier dato de usuarios del sistema',
+			'key' => 'update user',
+			'slug' => 'update-user',
+			'description' => 'Editar cualquier dato del usuario seleccionado',
 		]);
 
 		Permission::create([
-			'name' => 'Eliminar usuario',
-			'slug' => 'users.destroy',
+			'name' => 'Elimina usuario',
+			'key' => 'delete-user',
+			'slug' => 'delete-user',
 			'description' => 'Eliminar un usuario del sistema',
 		]);
 
 		// Roles
 		Permission::create([
-			'name' => 'Navegar roles',
-			'slug' => 'roles.index',
+			'name' => 'Listar roles',
+			'key' => 'index role',
+			'slug' => 'index-role',
 			'description' => 'Lista y navega todos los roles del sistema',
 		]);
 
 		Permission::create([
-			'name' => 'Ver detalle de rol',
-			'slug' => 'roles.show',
-			'description' => 'Ver en detalle cada unode  los roles del sistema',
+			'name' => 'Crear rol',
+			'key' => 'create role',
+			'slug' => 'create-role',
+			'description' => 'Crear un rol del sistema',
 		]);
 
 		Permission::create([
-			'name' => 'Crear rol',
-			'slug' => 'roles.create',
-			'description' => 'Crear un rol en el sistema',
+			'name' => 'Detallar rol',
+			'key' => 'show role',
+			'slug' => 'show-role',
+			'description' => 'Ver el detalle del rol seleccionado',
 		]);
 
 		Permission::create([
 			'name' => 'Editar rol',
-			'slug' => 'roles.edit',
-			'description' => 'Editar cualquier dato de roles del sistema',
+			'key' => 'update role',
+			'slug' => 'update-role',
+			'description' => 'Editar cualquier dato del rol seleccionado',
 		]);
 
 		Permission::create([
 			'name' => 'Eliminar role',
-			'slug' => 'roles.destroy',
+			'key' => 'delete-role',
+			'slug' => 'delete-role',
 			'description' => 'Eliminar un usuario del sistema',
 		]);
 
-		// Property
-		Permission::create([
-			'name' => 'Navegar propiedades',
-			'slug' => 'properties.index',
-			'description' => 'Lista y navega todas las propiedades del sistema',
+		Role::create([
+			'name' => 'Administrador',
+			'slug' => 'administrador',
+			'description' => 'Usuario del sistema con todos los accesos sin restricciones',
 		]);
 
-		Permission::create([
-			'name' => 'Ver detalle de una propiedad',
-			'slug' => 'properties.show',
-			'description' => 'Ver el detalle de una propiedad del sistema',
+		Role::create([
+			'name' => 'Cliente',
+			'slug' => 'cliente',
+			'description' => 'Usuario que se registra al sistema para usar los servicios des sistema',
 		]);
 
-		Permission::create([
-			'name' => 'Crear una propiedad',
-			'slug' => 'properties.create',
-			'description' => 'Crear una propiedad en el sistema',
-		]);
-
-		Permission::create([
-			'name' => 'Editar una propiedad',
-			'slug' => 'properties.edit',
-			'description' => 'Editar cualquier dato de una propiedad del sistema',
-		]);
-
-		Permission::create([
-			'name' => 'Eliminar una propiedad',
-			'slug' => 'properties.destroy',
-			'description' => 'Eliminar una propiedad del sistema',
-		]);
-
-		// Category
-		Permission::create([
-			'name' => 'Navegar categorias',
-			'slug' => 'categories.index',
-			'description' => 'Lista y navega todas las categorias del sistema',
-		]);
-
-		Permission::create([
-			'name' => 'Ver detalle de una categoria',
-			'slug' => 'categories.show',
-			'description' => 'Ver el detalle de una categoria del sistema',
-		]);
-
-		Permission::create([
-			'name' => 'Crear una categoria',
-			'slug' => 'categories.create',
-			'description' => 'Crear una categoria en el sistema',
-		]);
-
-		Permission::create([
-			'name' => 'Editar una categoria',
-			'slug' => 'categories.edit',
-			'description' => 'Editar cualquier dato de una categoria del sistema',
-		]);
-
-		Permission::create([
-			'name' => 'Eliminar una categoria',
-			'slug' => 'categories.destroy',
-			'description' => 'Eliminar una categoria del sistema',
-		]);
 	}
 }

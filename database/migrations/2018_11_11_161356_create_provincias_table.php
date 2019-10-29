@@ -14,6 +14,10 @@ class CreateProvinciasTable extends Migration {
 		Schema::create('provincias', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('provincia_name');
+			$table->string('provincia_capital')->nullable();; //ciudades principales
+			$table->string('image')->default('city_defaul.jpg');
+			//FK
+			$table->integer('departamento_id')->unsigned();
 			$table->timestamps();
 		});
 	}

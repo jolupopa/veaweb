@@ -152,7 +152,7 @@ return [
 		*/
 		RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 		Collective\Html\HtmlServiceProvider::class,
-		Caffeinated\Shinobi\ShinobiServiceProvider::class,
+		
 		Yajra\DataTables\DataTablesServiceProvider::class,
 
 		/*

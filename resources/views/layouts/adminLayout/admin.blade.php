@@ -20,6 +20,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 	<!-- Font Awesome Icons -->
 	<link rel="stylesheet" href="/admin/plugins/font-awesome/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="/admin/plugins/bootstrap/css/bootstrap.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
 	<!-- Google Font: Source Sans Pro -->
@@ -31,20 +33,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<div class="wrapper">
 
 		<!-- Navbar -->
-		@include('layouts.adminLayout.admin_header')
+		@include('layouts.adminLayout.includes.header')
 		<!-- /.navbar -->
 
 		<!-- Main Sidebar Container -->
-		@include('layouts.adminLayout.admin_sidebarLeft')
+		@include('layouts.adminLayout.includes.sidebarLeft')
 		<!-- /.sidebar -->
 		<!-- Content Wrapper. Contains page content -->
 		@yield('content')
 		<!-- /.content-wrapper -->
 
 		<!-- Control Sidebar Right -->
-		@include('layouts.adminLayout.admin_sidebarRight')
+		@include('layouts.adminLayout.includes.sidebarRight')
 		<!-- /.control-sidebarRight  -->
-		@include('layouts.adminLayout.admin_footer')
+		@include('layouts.adminLayout.includes.footer')
 
 		<!-- Main Footer -->
 
